@@ -1,2 +1,20 @@
-.DS_Store
+
 .env
+# virtual env
+.venv/
+
+# Airflow
+airflow.db
+airflow.cfg
+logs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
