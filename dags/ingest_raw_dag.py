@@ -3,7 +3,16 @@ from airflow.operators.python import PythonOperator
 from datetime import datetime
 import boto3
 import os
+from dotenv import load_dotenv
 
+#load_dotenv(
+#    "/Users/pernebayarailym/Documents/Portfolio_Projects_AP/Simplon_DE_Projects/Python_Projects/Industrial_IoT_DataLake_project/.env"
+#)
+
+print("Current working directory:", os.getcwd())
+print("Dotenv loaded:", load_dotenv("/Users/pernebayarailym/Documents/Portfolio_Projects_AP/Simplon_DE_Projects/Python_Projects/Industrial_IoT_DataLake_project/.env"))
+print("ACCESS KEY:", os.getenv("AWS_ACCESS_KEY_ID"))
+print("SECRET KEY:", os.getenv("AWS_SECRET_ACCESS_KEY"))
 
 s3 = boto3.client(
     "s3",
@@ -12,9 +21,15 @@ s3 = boto3.client(
     aws_secret_access_key=os.getenv("AWS_SECRET_ACCESS_KEY")
 )
 
+print(os.getenv("AWS_ACCESS_KEY_ID"))
+print(os.getenv("AWS_SECRET_ACCESS_KEY"))
 
-DATA_PATH = "/path/to/project/data"
 
+#DATA_PATH = os.path.join(os.getcwd(), "data")
+#"/path/to/project/data"
+#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+#DATA_PATH = os.path.join(BASE_DIR, "data")
+DATA_PATH = "/Users/pernebayarailym/Documents/Portfolio_Projects_AP/Simplon_DE_Projects/Python_Projects/Industrial_IoT_DataLake_project/data"
 
 def upload_files():
 
@@ -48,3 +63,5 @@ with DAG(
         task_id="upload_to_raw",
         python_callable=upload_files
     )
+
+    task
