@@ -567,20 +567,42 @@ Verify:
 
 # 12. Conclusion
 
-The C19 implementation provides a functional industrial Data Lake foundation:
+The Industrial IoT Data Lake project provides a functional end-to-end prototype for managing industrial data using modern data engineering tools.
 
-* Object storage deployed with MinIO
-* Raw data ingestion automated with Airflow
-* Partitioned data organization implemented
-* Data transformation pipeline created
-* Schema differences standardized
-* Large dataset processing simulated with chunking
-* Data integrity verified using MD5
+Implemented features include:
 
-Future improvements:
+Object storage deployed with MinIO
+Automated raw data ingestion orchestrated with Apache Airflow
+Structured Data Lake organization using Raw, Staging, Curated and Archive zones
+Data cleaning and transformation pipeline implemented in Python
+Schema standardization across heterogeneous datasets
+Large dataset processing simulated through chunk-based ingestion
+Data integrity verification using MD5 hashing
+Metadata catalog integration with OpenMetadata
+Successful metadata ingestion workflow executed through OpenMetadata and Airflow
 
-* OpenMetadata catalog integration
-* MinIO lifecycle policies
-* Access control policies
-* Data encryption
-* Governance documentation
+The project demonstrates a complete data engineering workflow, from raw CSV ingestion to metadata cataloging, while following a layered Data Lake architecture.
+
+# 13. OpenMetadata Integration
+
+OpenMetadata was integrated to provide centralized metadata management for the Data Lake.
+
+The following components were successfully configured:
+
+* OpenMetadata Server
+* OpenMetadata Ingestion Service (Airflow)
+* MinIO Storage Service
+* Metadata ingestion workflow
+* Automatic discovery of MinIO buckets
+* Storage metadata cataloging
+
+The metadata ingestion workflow was successfully executed through Apache Airflow, allowing OpenMetadata to catalog the storage structure of the Industrial IoT Data Lake.
+
+# Current limitations
+
+Some advanced governance features were intentionally left outside the project scope:
+
+Automatic extraction of CSV schemas from object storage would require additional ingestion connectors or database-based metadata ingestion.
+MinIO Lifecycle Management (ILM) policies were not implemented because the local development environment does not expose the complete administration features available in production deployments.
+
+These limitations do not affect the core objectives of the project, which were successfully achieved.
